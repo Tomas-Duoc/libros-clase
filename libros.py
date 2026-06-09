@@ -2,10 +2,28 @@ def titulo():
     input()
 
 def obtener_autor(titulo):
-    
+    for i in libros:
+        if i[0] == titulo:
+            return i[1]
 
 def calcular_annos_antes_de_morir(titulo):
-    pass
+    for i in libros:
+        if i[0] == titulo:
+            anio_public = i[2]
+
+    nombre_autor = obtener_autor(titulo)
+    info = datos_autores[nombre_autor]
+    anio_muerte = info[1][0]
+
+    return anio_muerte - anio_public
+
+def obtener_idioma(titulo):
+    nombre_autor = obtener_autor(titulo)
+    info = datos_autores[nombre_autor]
+    idioma = info[2]
+
+    return idioma
+        
 
 libros = [
     ['Papelucho programador', 'Marcela Paz', 1983],
@@ -23,7 +41,6 @@ datos_autores = {
     'Miguel de Cervantes': [[1547,  9, 29], [1616,  4, 22], 'español'],
     # ...
 }
-
 
 titulo = input('Ingrese titulo del libro: ')
 print('El libro fue escrito en', obtener_idioma(titulo))
